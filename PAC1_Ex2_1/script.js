@@ -53,12 +53,12 @@ function checkLength(input, min, max) {
 
 // Check password is valid
 function checkPassword (input) {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,16}$/;
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_\-+={}\[\]|:;"'<>,.?/]).+$/;
     
     if (re.test(input.value.trim())) {
         showSuccess(input.value);
     } else {
-        showError(input, 'Password must include at least one uppercase letter, one number and one special character');
+        showError(input, 'Password must include at least one uppercase letter, one lowercase letter, one number and one special character');
     }
 }
 
@@ -80,7 +80,7 @@ form.addEventListener('submit', e => {
 
     checkRequired([username, email, password, password2]);
     checkLength(username, 3, 15);
-    checkLength(password, 6, 25);
+    checkLength(password, 8, 25);
     checkEmail(email);
     checkPassword(password);
     checkPasswordsMatch(password, password2);
