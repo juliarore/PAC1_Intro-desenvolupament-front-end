@@ -51,6 +51,24 @@ function checkLength(input, min, max) {
     }
 }            
 
+// Check password is valid
+function checkPassword (input) {
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,16}$/;
+    
+    if (re.test(input.value.trim())) {
+        showSuccess(input.value);
+    } else {
+        showError(input, 'Password must include at least one uppercase letter, one number and one special character');
+    }
+}
+
+// Check passwords match
+function checkPasswordsMatch(input1, input2) {
+    if (input1.value !== input2.value) {
+        showError(input2, 'Passwords do not match');
+    }
+}
+
 // Get fieldname
 function getFieldName(input) {
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
@@ -64,4 +82,6 @@ form.addEventListener('submit', e => {
     checkLength(username, 3, 15);
     checkLength(password, 6, 25);
     checkEmail(email);
+    checkPassword(password);
+    checkPasswordsMatch(password, password2);
 });  
