@@ -69,7 +69,7 @@ h2 {
     border-color: var(--error-color);
 }
 
-.form-control small {
+.form-control .error-message {
     color: var(--error-color);
     position: absolute;
     bottom: 0;
@@ -77,7 +77,7 @@ h2 {
     visibility: hidden;
 }
 
-.form-control.error small {
+.form-control.error .error-message {
     visibility: visible;
 }
 
@@ -97,4 +97,33 @@ h2 {
 .form button:hover {
     background-color: #2583c2;
     border-color: #2583c2;
+}
+
+/* Tooltip */
+.password-hint {
+    visibility: hidden;
+    width: 100%;
+    background: #e8f6ff;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    margin: 0;
+}
+
+.password-hint.visible {
+    visibility: visible;
+}
+
+.password-hint small {
+    visibility: hidden;
+    color: #555;
+    position: relative;
+}
+
+.password-hint.visible small {
+    visibility: visible;
 }

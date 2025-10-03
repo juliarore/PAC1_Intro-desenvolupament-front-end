@@ -14,22 +14,25 @@
             <div class="form-control">
                 <label for="username">Username</label>
                 <input type="text" id="username" placeholder="Enter username">
-                <small>Error message</small>
+                <small class="error-message">Error message</small>
             </div>
             <div class="form-control">
                 <label for="email">Email</label>
                 <input type="text" id="email" placeholder="Enter email">
-                <small>Error message</small>
+                <small class="error-message">Error message</small>
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
                 <input type="password" id="password" placeholder="Enter password">
-                <small>Error message</small>
+                <small class="error-message">Error message</small>
+                <div class="password-hint" id="password-hint">
+                    <small>Password must include at least one uppercase letter, one lowercase letter, one number and one special character (like !@#$%^&)</small>
+                </div>
             </div>
             <div class="form-control">
-                <label for="password2">Confirm password</label>
-                <input type="password" id="password2" placeholder="Enter password again">
-                <small>Error message</small>
+                <label for="password-confirmation">Confirm password</label>
+                <input type="password" id="password-confirmation" placeholder="Enter password again">
+                <small class="error-message">Error message</small>
             </div>
             <button>Submit</button>
         </form>
