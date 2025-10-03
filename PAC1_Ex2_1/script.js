@@ -4,6 +4,7 @@
     const password = document.getElementById('password');
     const password2 = document.getElementById('password-confirmation');
     const passwordHint = document.getElementById('password-hint');
+    const age = document.getElementById('age');
 
     // Show input error message
     function showError(input, message) {
@@ -43,7 +44,7 @@
     // Check required fields
     function checkRequired(inputArr) {
         inputArr.forEach(function(input) {
-            if(input.value.trim() === '') { 
+            if (input.value.trim() === '') { 
                 showError(input, `${getFieldName(input)} is required`); 
             } else {
                 showSuccess(input);
@@ -80,6 +81,22 @@
         }
     }
 
+    // Check age is valid
+    function checkAge(input) {
+        if (input.value === '') {
+            showError(input, 'Age is required');
+            return;
+        }
+
+        const ageValue = Number(input.value);
+
+        if (ageValue < 0 || ageValue >= 100) {
+            showError(input, 'Age must be between 0 and 99');
+        } else {
+            showSuccess(input);
+        }
+    }
+
     // Get fieldname
     function getFieldName(input) {
         return input.id.charAt(0).toUpperCase() + input.id.slice(1).replace(/[-_]/g, ' ');
@@ -95,6 +112,7 @@
         checkEmail(email);
         checkPassword(password);
         checkPasswordsMatch(password, password2);
+        checkAge(age);
     });  
 
     password.addEventListener('focus', showPasswordHint);
