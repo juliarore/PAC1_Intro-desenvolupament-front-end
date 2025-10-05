@@ -27,7 +27,16 @@ function calculate() {
         });
 }
 
+// Check if input is a valid number
+function check() {
+    if (amountElement_one.value < 0) {
+        amountElement_one.value = 0;
+    }
+}
+
 // Event listeners
+amountElement_one.addEventListener('input', check);
+
 currencyElement_one.addEventListener('change', calculate);
 amountElement_one.addEventListener('input', calculate);
 currencyElement_two.addEventListener('change', calculate);
