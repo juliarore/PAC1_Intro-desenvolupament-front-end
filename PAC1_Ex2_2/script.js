@@ -12,15 +12,19 @@ function calculate() {
     const currency_two = currencyElement_two.value;
 
     fetch(`https://open.er-api.com/v6/latest/${currency_one}`)        
-    .then(res => res.json())
+        .then(res => res.json())
         .then(data => {
-            // console.log(data);
             const rate = data.rates[currency_two];
 
             rateElement.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
 
             amountElement_two.value = (amountElement_one.value * rate).toFixed(2);
-        });    
+        })
+        
+        .catch(error => {   
+            rateElement.innerText = `Error fetching exchange rates: ${error.message}`;
+            rateElement.classList.add('error');
+        });
 }
 
 // Event listeners

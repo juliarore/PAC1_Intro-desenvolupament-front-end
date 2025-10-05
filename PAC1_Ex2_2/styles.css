@@ -1,5 +1,6 @@
 :root {
     --primary-color: #5fbaa7;
+    --error-color: #ff4c4c;
 }
 
 * {
@@ -85,6 +86,7 @@ p {
     color: var(--primary-color);
     font-size: 14px;
     padding: 0 10px;
+    font-weight: bold;
 }
 
 select:focus, input:focus, .btn:focus {
@@ -95,4 +97,8 @@ select:focus, input:focus, .btn:focus {
     .currency input {
         width: 200px;
     }
+}
+
+.error {
+    color: var(--error-color);
 }
