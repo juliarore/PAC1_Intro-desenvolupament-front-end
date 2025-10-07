@@ -4,12 +4,17 @@ const currencyElement_two = document.getElementById('currency-two');
 const amountElement_two = document.getElementById('amount-two');
 
 const rateElement = document.getElementById('rate');
+const loader = document.getElementById('loader');
 const swap = document.getElementById('swap');
 
 // Fetch exchange rates and update the DOM
 function calculate() {
     const currency_one = currencyElement_one.value;
     const currency_two = currencyElement_two.value;
+
+    // Display loading message
+    loader.classList.add('visible');
+    rateElement.innerText = ''; 
 
     fetch(`https://open.er-api.com/v6/latest/${currency_one}`)        
         .then(res => res.json())
@@ -24,6 +29,10 @@ function calculate() {
         .catch(error => {   
             rateElement.innerText = `Error fetching exchange rates: ${error.message}`;
             rateElement.classList.add('error');
+        })
+        // Hide loading message
+        .finally(() => {
+            loader.classList.remove('visible');
         });
 }
 
