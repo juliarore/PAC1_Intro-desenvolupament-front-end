@@ -4,10 +4,50 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
+const currencySelect = document.getElementById('currency');
+
+const basePricesUSD = {
+    "The Conjuring: Last Rites": 10,
+    "28 Years Later": 12,
+    "Inside Out 2": 8,
+    "Lilo & Stitch": 9
+};
+
 populateUI();
 
 let ticketPrice = +movieSelect.value;
 
+// Update movie prices based on selected currency
+function updateMoviePrices(selectedCurrency) { 
+    fetch(`https://open.er-api.com/v6/latest/USD`)
+        .then(res => res.json())
+        .then(data => {
+            const rate = data.rates[selectedCurrency];
+            
+            const options = movieSelect.querySelectorAll('option');
+            
+            // Iterate over each movie and its base price in USD
+            for (const [movieName, baseUSD] of Object.entries(basePricesUSD)) {
+                const convertedPrice = baseUSD * rate;
+                
+                // Find the option that corresponds to this movie
+                options.forEach(option => {
+                    // If the option text includes the movie name...
+                    if (option.textContent.includes(movieName)) {
+                        option.value = convertedPrice.toFixed(2);
+                        option.textContent = `${movieName} (${convertedPrice.toFixed(2)} ${selectedCurrency})`;
+                    }
+                });
+            }
+            
+            ticketPrice = +movieSelect.value;
+            
+            updateSelectedCount(selectedCurrency);
+        })
+        .catch(error => {
+            console.error('Error fetching currency data:', error);
+        });
+}
 
 // Save selected movie index and price
 function setMovieData(movieIndex, moviePrice) {
@@ -16,7 +56,7 @@ function setMovieData(movieIndex, moviePrice) {
 }
 
 // Update total and count
-function updateSelectedCount() {
+function updateSelectedCount(selectedCurrency) {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
     // Save selected seats in local storage
@@ -27,7 +67,7 @@ function updateSelectedCount() {
     const selectedSeatsCount = selectedSeats.length;
 
     count.innerText = selectedSeatsCount;
-    total.innerText = selectedSeatsCount * ticketPrice; 
+    total.innerText = `${(selectedSeatsCount * ticketPrice).toFixed(2)} ${selectedCurrency || 'USD'}`;
 }    
 
 // Get data from local storage and populate UI
@@ -64,6 +104,12 @@ container.addEventListener('click', (e) => {
         updateSelectedCount();
     }
 });    
+
+// Currency select event 
+currencySelect.addEventListener('change', (e) => { 
+    const selectedCurrency = e.target.value; 
+    updateMoviePrices(selectedCurrency); 
+});
 
 // Initial count and total set
 updateSelectedCount();
