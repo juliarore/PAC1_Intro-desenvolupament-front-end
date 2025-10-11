@@ -4,10 +4,18 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
+const currencySelect = document.getElementById('currency');
+
+const basePricesUSD = {
+    "The Conjuring: Last Rites": 10,
+    "28 Years Later": 12,
+    "Inside Out 2": 8,
+    "Lilo & Stitch": 9
+};
+
 populateUI();
 
 let ticketPrice = +movieSelect.value;
-
 
 // Save selected movie index and price
 function setMovieData(movieIndex, moviePrice) {
@@ -64,6 +72,12 @@ container.addEventListener('click', (e) => {
         updateSelectedCount();
     }
 });    
+
+// Currency select event 
+currencySelect.addEventListener('change', (e) => { 
+    const selectedCurrency = e.target.value; 
+    updateMoviePrices(selectedCurrency); 
+});
 
 // Initial count and total set
 updateSelectedCount();
