@@ -1,8 +1,11 @@
+/* Root variables */
 :root {
     --primary-color: #5fbaa7;
     --error-color: #ff4c4c;
 }
 
+
+/* Global styles */
 * {
     box-sizing: border-box;
 }
@@ -27,6 +30,8 @@ p {
     text-align: center;
 }
 
+
+/* Button styles */
 .btn {
     color: #fff;
     background: var(--primary-color);
@@ -43,10 +48,14 @@ p {
     background: #3aa594;
 }    
 
+
+/* Image styles */
 .money-img {
     width: 150px;
 }
 
+
+/* Currency select and input styles */
 .currency {
     padding: 40px 0;
     display: flex;
@@ -76,6 +85,8 @@ p {
     text-align: right;
 }
 
+
+/* Swap rate container styles */
 .swap-rate-container {
     display: flex;
     align-items: center;
@@ -89,19 +100,26 @@ p {
     font-weight: bold;
 }
 
+
+/* Focus styles */
 select:focus, input:focus, .btn:focus {
     outline: none;
 }
 
+
+/* Responsive desugn */
 @media (max-width: 600px) {
     .currency input {
         width: 200px;
     }
 }
 
+
+/* Error message styles */
 .error {
     color: var(--error-color);
 }
+
 
 /* Loader (spinner) */
 .loader {
