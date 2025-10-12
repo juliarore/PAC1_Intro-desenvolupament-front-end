@@ -57,6 +57,7 @@ function setMovieData(movieIndex, moviePrice) {
 
 // Update total and count
 function updateSelectedCount(selectedCurrency) {
+    debugger;
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
     // Save selected seats in local storage
@@ -101,7 +102,8 @@ movieSelect.addEventListener('change', (e) => {
 container.addEventListener('click', (e) => {
     if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
         e.target.classList.toggle('selected');
-        updateSelectedCount();
+        const selectedCurrency = currencySelect.value;
+        updateSelectedCount(selectedCurrency);
     }
 });    
 

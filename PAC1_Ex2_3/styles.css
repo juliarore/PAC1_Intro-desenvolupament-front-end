@@ -90,9 +90,7 @@ body {
     display: flex;
     padding: 5px 10px;
     border-radius: 5px;
-    list-style: none;
-    justify-content: space-between;
-}
+}    
 
 .showcase li {
     display: flex;
