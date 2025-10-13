@@ -11,37 +11,43 @@
     <div class="container">
         <form id="form" class="form">
             <h2>Register with us</h2>
+            <!-- Username -->
             <div class="form-control">
                 <label for="username">Username</label>
                 <input type="text" id="username" placeholder="Enter username">
                 <small class="error-message">Error message</small>
             </div>
+            <!-- Email -->
             <div class="form-control">
                 <label for="email">Email</label>
                 <input type="text" id="email" placeholder="Enter email">
                 <small class="error-message">Error message</small>
             </div>
+            <!-- Age -->
             <div class="form-control">
                 <label for="age">Age</label>
                 <input type="number" id="age" placeholder="Enter your age">
                 <small class="error-message">Error message</small>
             </div>
+            <!-- Password -->
             <div class="form-control">
                 <label for="password">Password</label>
                 <input type="password" id="password" placeholder="Enter password">
                 <small class="error-message">Error message</small>
+                <!-- Password hint (password requirements) -->
                 <div class="password-hint" id="password-hint">
                     <small>Password must include at least one uppercase letter, one lowercase letter, one number and one special character (like !@#$%^&)</small>
                 </div>
             </div>
+            <!-- Password confirmation -->
             <div class="form-control">
                 <label for="password-confirmation">Confirm password</label>
                 <input type="password" id="password-confirmation" placeholder="Enter password again">
                 <small class="error-message">Error message</small>
             </div>
+            <!-- Submit button -->
             <button>Submit</button>
         </form>
-
     </div>
     
     <script src="./script.js"></script>
